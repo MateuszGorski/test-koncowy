@@ -19,7 +19,11 @@ export default class PersonList extends React.Component {
     return (
       <ul>
         { this.state.persons.map(person => <li>
-        {person.name.first}</li>)}
+        {person.name.first}
+        {person.name.last}
+        {person.email}
+      
+        </li>)}
       </ul>
       
     )
