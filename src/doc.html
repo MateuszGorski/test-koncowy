@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="container">
+    </div>
+
+<script>
+    const container = document.getElementById('container');
+    fetchData()
+    function fetchData() {
+        axios.get('https://randomuser.me/api/?results=10')
+            .then(function (response) {
+                // handle success
+                response.data.results.forEach(user => {
+                    const el = document.createElement('div')
+                    const email = document.createElement('div')
+                    el.innerText = ${user.name.first} ${user.name.last}
+                    email.innerText = ${user.email}
+                    container.appendChild(el)
+                    container.appendChild(email)
+                })
+            })
+    }
+</script>
+
+<style>
+    html,body {
+        height: 100%;
+    }
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    #counter {
+        font-size: 40px;
+    }
+    .button {
+        font-size: 20px;
+    }
+    #toast {
+        max-width: 200px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        position: fixed;
+        z-index: 1;
+        left: 0;right:0;
+        bottom: 30px;
+        font-size: 17px;
+        white-space: nowrap;
+    }
+</style>
+</body>
+</html>
